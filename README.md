@@ -9,7 +9,7 @@ self-hosted in this repo.
 
 ```
 index.html         Landing page (hero, features, screenshots, beta CTA)
-privacy.html       Privacy policy (single source of truth: /tmp/draft.md)
+privacy.html       Privacy policy
 404.html           Custom 404
 style.css          Compiled CSS (generated — do not edit by hand)
 site.webmanifest   PWA manifest (icons in assets/favicon/)
@@ -39,8 +39,8 @@ never runs a build.
 
 ## Screenshots
 
-Originals live outside this repo (`~/Documents/projects/tidesapp/`). To
-regenerate the web variants (1080×2400 PNG → AVIF/WebP at 360/720/1080):
+The original 1080×2400 PNGs are not committed (source material). To
+regenerate the web variants (AVIF/WebP at 360/720/1080):
 
 ```sh
 magick in.png -strip /tmp/clean.png                  # strip EXIF first — see note
@@ -54,8 +54,8 @@ fingerprint) and *both* converters copy it into the output. Always run
 `-strip` on the source first and byte-scan the outputs for `EXIF`/`XMP`
 markers before committing.
 
-Google Play listing exports (PNG/JPG, 9:16 + 9:20) are produced in
-`../play-listing/` (sibling of this repo, not published).
+App-store listing assets (Play Store screenshots) are produced and
+stored outside this repo.
 
 ## Links used on the site
 

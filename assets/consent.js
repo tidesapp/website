@@ -44,51 +44,60 @@
     footer.appendChild(prefs);
   }
 
+  var banner = null;
+
+  function buildBanner() {
+    var b = document.createElement('div');
+    b.className = 'consent-banner';
+    b.setAttribute('role', 'region');
+    b.setAttribute('aria-label', 'Cookie consent');
+    b.innerHTML =
+      '<div class="glass-card consent-inner">' +
+        '<div class="flex min-w-0 flex-1 items-start gap-3 sm:items-center">' +
+          '<span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-tide-50 text-tide-700 sm:mt-0 dark:bg-tide-500/15 dark:text-tide-400">' +
+            '<svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+              '<path d="M2 13c2.7-5.5 5.3-5.5 8 0s5.3 5.5 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>' +
+            '</svg>' +
+          '</span>' +
+          '<p class="consent-text">We use <a href="privacy#analytics">Google&nbsp;Analytics</a> to collect ' +
+          'anonymous usage statistics for this website. The app itself collects no ' +
+          'data. Your choice is stored on this device only.</p>' +
+        '</div>' +
+        '<div class="flex flex-col gap-2 sm:flex-row sm:shrink-0">' +
+          '<button type="button" class="btn btn-primary" data-choice="granted">Allow analytics</button>' +
+          '<button type="button" class="btn btn-ghost" data-choice="denied">Don&#39;t allow</button>' +
+        '</div>' +
+      '</div>';
+
+    b.querySelectorAll('button[data-choice]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setChoice(btn.getAttribute('data-choice'));
+        if (btn.getAttribute('data-choice') === 'granted') loadAnalytics();
+        b.remove();
+        banner = null;
+      });
+    });
+
+    var firstButton = b.querySelector('button');
+    if (firstButton) firstButton.focus();
+    return b;
+  }
+
+  function showBanner() {
+    if (!banner || !banner.isConnected) {
+      banner = buildBanner();
+      document.body.appendChild(banner);
+    }
+  }
+
   prefs.addEventListener('click', function (e) {
     e.preventDefault();
     showBanner();
   });
 
-  if (getChoice() === 'granted') {
+  if (getChoice() !== 'granted') {
+    showBanner();
+  } else {
     loadAnalytics();
-    return;
   }
-
-  var banner = document.createElement('div');
-  banner.className = 'consent-banner';
-  banner.setAttribute('role', 'region');
-  banner.setAttribute('aria-label', 'Cookie consent');
-  banner.innerHTML =
-    '<div class="glass-card consent-inner">' +
-      '<div class="flex min-w-0 flex-1 items-start gap-3 sm:items-center">' +
-        '<span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-tide-50 text-tide-700 sm:mt-0 dark:bg-tide-500/15 dark:text-tide-400">' +
-          '<svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-            '<path d="M2 13c2.7-5.5 5.3-5.5 8 0s5.3 5.5 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>' +
-          '</svg>' +
-        '</span>' +
-        '<p class="consent-text">We use <a href="privacy#analytics">Google&nbsp;Analytics</a> to collect ' +
-        'anonymous usage statistics for this website. The app itself collects no ' +
-        'data. Your choice is stored on this device only.</p>' +
-      '</div>' +
-      '<div class="flex flex-col gap-2 sm:flex-row sm:shrink-0">' +
-        '<button type="button" class="btn btn-primary" data-choice="granted">Allow analytics</button>' +
-        '<button type="button" class="btn btn-ghost" data-choice="denied">Don&#39;t allow</button>' +
-      '</div>' +
-    '</div>';
-  document.body.appendChild(banner);
-
-  function showBanner() {
-    if (!banner.isConnected) document.body.appendChild(banner);
-  }
-
-  banner.querySelectorAll('button[data-choice]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      setChoice(btn.getAttribute('data-choice'));
-      if (btn.getAttribute('data-choice') === 'granted') loadAnalytics();
-      banner.remove();
-    });
-  });
-
-  var firstButton = banner.querySelector('button');
-  if (firstButton) firstButton.focus();
 })();

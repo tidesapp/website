@@ -5,6 +5,9 @@
     --border: #e0e0e0;
     --todo-bg: #fff7e0;
     --todo-text: #7a5c00;
+    --banner-bg: #f4f4f4;
+    --btn-bg: #0b57d0;
+    --btn-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +18,9 @@
         --border: #333;
         --todo-bg: #3a3000;
         --todo-text: #ffd966;
+        --banner-bg: #141414;
+        --btn-bg: #8ab4f8;
+        --btn-text: #111111;
     }
 }
 
@@ -84,4 +90,51 @@ footer {
     padding: 1rem 0;
     color: var(--muted);
     font-size: 0.875rem;
+}
+
+.cookie-prefs {
+    margin-right: 0.75rem;
+}
+
+#consent-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    background: var(--banner-bg);
+    border-top: 1px solid var(--border);
+    padding: 0.9rem 1.25rem calc(0.9rem + env(safe-area-inset-bottom));
+    font-size: 0.925rem;
+}
+
+#consent-banner p {
+    margin: 0;
+    flex: 1 1 20rem;
+}
+
+#consent-banner .actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#consent-banner button {
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--btn-bg);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+}
+
+#consent-banner button.secondary {
+    background: transparent;
+    border-color: var(--muted);
+    color: var(--text);
 }

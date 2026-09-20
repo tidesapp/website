@@ -1,0 +1,7 @@
+# Private agent context — never commit
+AGENTS.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log

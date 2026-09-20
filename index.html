@@ -3,30 +3,245 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UK Tides Offline</title>
+    <title>UK Tides Offline — tide predictions that work with no signal</title>
     <meta name="description" content="Offline tide predictions for the UK. Multi-day charts, nearest station by GPS, home-screen widget. No account, no network.">
-    <link rel="icon" href="data:,">
+    <meta property="og:title" content="UK Tides Offline">
+    <meta property="og:description" content="Tide predictions for the UK that work with no signal at all — no account, no network.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tidesapp.co.uk/">
+    <meta property="og:image" content="https://tidesapp.co.uk/assets/screenshots/chart-dark-720.webp">
+    <meta name="theme-color" content="#f9fafb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+    <link rel="icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="style.css">
     <script defer src="assets/consent.js"></script>
 </head>
 <body>
-    <main class="container">
-        <h1>UK Tides Offline</h1>
-        <p class="tagline">
-            Tide predictions for the UK that work with no signal at all —
-            no account, no network, everything on your phone.
-        </p>
-        <ul class="features">
-            <li>Pannable multi-day tide chart with high/low times</li>
-            <li>Nearest of 45 UK stations found by GPS</li>
-            <li>Home-screen widget with a &ldquo;now&rdquo; indicator</li>
-            <li>Runs entirely offline — harbour walls and dead zones included</li>
-        </ul>
-        <p class="coming-soon">Coming soon on Google&nbsp;Play</p>
-        <p class="muted small"><a href="privacy">Privacy policy</a></p>
+    <!-- Site header -->
+    <header class="fixed top-2 md:top-4 z-40 w-full px-3">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-card h-14 flex items-center justify-between gap-3 px-4">
+                <a href="/" class="flex items-center gap-2.5 min-w-0" aria-label="UK Tides Offline — home">
+                    <svg class="size-7 shrink-0" viewBox="0 0 108 108" aria-hidden="true">
+                        <rect width="108" height="108" rx="24" fill="#2196F3"/>
+                        <path d="M18,54 C26,38 34,38 42,54 C50,70 58,70 66,54 C74,38 82,38 90,54" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="42" cy="54" r="5.5" fill="#FF5252"/>
+                    </svg>
+                    <span class="font-semibold tracking-tight truncate">UK Tides Offline</span>
+                </a>
+                <nav class="hidden md:block" aria-label="Main">
+                    <ul class="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-300">
+                        <li><a class="transition hover:text-gray-950 dark:hover:text-white" href="#features">Features</a></li>
+                        <li><a class="transition hover:text-gray-950 dark:hover:text-white" href="#screenshots">Screenshots</a></li>
+                        <li><a class="transition hover:text-gray-950 dark:hover:text-white" href="#beta">Beta</a></li>
+                        <li><a class="transition hover:text-gray-950 dark:hover:text-white" href="privacy">Privacy</a></li>
+                    </ul>
+                </nav>
+                <a class="btn btn-primary shrink-0" href="https://forms.gle/kTfjTmrAgcGXGwMX6" target="_blank" rel="noopener">Join the beta</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="px-4 pt-32 md:pt-40 pb-14 md:pb-20">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <div class="max-w-xl">
+                    <p class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+                        <span class="size-1.5 rounded-full bg-now"></span>
+                        Internal testing &middot; up to 100 users
+                    </p>
+                    <h1 class="mt-6 text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] text-balance">
+                        Tide predictions that work with
+                        <span class="text-tide-600 dark:text-tide-400">no signal at all</span>
+                    </h1>
+                    <p class="mt-5 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                        Multi-day charts, your nearest UK station, and a home-screen
+                        widget &mdash; everything computed on your phone. No account,
+                        no network, nothing sent anywhere.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                        <a class="btn btn-primary" href="https://forms.gle/kTfjTmrAgcGXGwMX6" target="_blank" rel="noopener">
+                            Apply for the beta
+                            <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M3 8h10m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a class="btn btn-ghost" href="#screenshots">See the app</a>
+                    </div>
+                </div>
+                <div class="flex justify-center md:justify-end">
+                    <div class="phone-frame w-60 sm:w-64 md:w-72">
+                        <picture>
+                            <source type="image/avif" srcset="assets/screenshots/chart-dark-360.avif 360w, assets/screenshots/chart-dark-720.avif 720w, assets/screenshots/chart-dark-1080.avif 1080w" sizes="(min-width: 768px) 288px, 256px">
+                            <source type="image/webp" srcset="assets/screenshots/chart-dark-360.webp 360w, assets/screenshots/chart-dark-720.webp 720w, assets/screenshots/chart-dark-1080.webp 1080w" sizes="(min-width: 768px) 288px, 256px">
+                            <img src="assets/screenshots/chart-dark-720.webp" width="1080" height="2400" alt="Tide chart showing several days of high and low water at Mumbles" fetchpriority="high">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust strip -->
+        <section class="px-4 pb-14 md:pb-20" aria-label="Key facts">
+            <ul class="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-gray-500 dark:text-gray-400">
+                <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-tide-500"></span>No account</li>
+                <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-tide-500"></span>No network</li>
+                <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-tide-500"></span>45 UK stations</li>
+                <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-tide-500"></span>Free during testing</li>
+            </ul>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="scroll-mt-24 border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 px-4 py-16 md:py-24">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-center text-3xl md:text-4xl font-bold tracking-tight">Built for the water&rsquo;s edge</h2>
+                <p class="mx-auto mt-4 max-w-xl text-center text-gray-600 dark:text-gray-300">
+                    Everything a tide app should do &mdash; and nothing that needs a
+                    network.
+                </p>
+                <div class="mt-12 grid gap-5 sm:grid-cols-2">
+                    <div class="feature-card">
+                        <span class="feature-icon">
+                            <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M2 13c2.7-5.5 5.3-5.5 8 0s5.3 5.5 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <circle cx="10" cy="13" r="1.7" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <h3 class="text-lg font-semibold tracking-tight">Multi-day tide chart</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            A pannable chart with high and low times for several days
+                            ahead. Drag to plan your day.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">
+                            <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 21s-7-5.1-7-11a7 7 0 1114 0c0 5.9-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                                <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+                            </svg>
+                        </span>
+                        <h3 class="text-lg font-semibold tracking-tight">Nearest station by GPS</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            The nearest of 45 UK stations, found automatically &mdash;
+                            or browse them all on a map.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">
+                            <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="7" y="2.5" width="10" height="19" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                                <path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <h3 class="text-lg font-semibold tracking-tight">Home-screen widget</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            Tide curve and next high/low with a &ldquo;now&rdquo;
+                            marker &mdash; glanceable without opening the app.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">
+                            <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7.5 18h9a4.5 4.5 0 001.3-8.8A6.5 6.5 0 006.2 8.5 5 5 0 007.5 18z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                                <path d="M4 3l16 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <h3 class="text-lg font-semibold tracking-tight">Entirely offline</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            Predictions are computed on your device. No network
+                            required &mdash; harbour walls and dead zones included.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots -->
+        <section id="screenshots" class="scroll-mt-24 px-4 py-16 md:py-24">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-center text-3xl md:text-4xl font-bold tracking-tight">A look inside</h2>
+                <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 justify-items-center">
+                    <figure class="w-full">
+                        <div class="phone-frame">
+                            <picture>
+                                <source type="image/avif" srcset="assets/screenshots/chart-dark-360.avif 360w, assets/screenshots/chart-dark-720.avif 720w, assets/screenshots/chart-dark-1080.avif 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <source type="image/webp" srcset="assets/screenshots/chart-dark-360.webp 360w, assets/screenshots/chart-dark-720.webp 720w, assets/screenshots/chart-dark-1080.webp 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <img src="assets/screenshots/chart-dark-360.webp" width="1080" height="2400" loading="lazy" decoding="async" alt="Multi-day tide chart in dark theme">
+                            </picture>
+                        </div>
+                        <figcaption class="mt-3 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Multi-day chart</figcaption>
+                    </figure>
+                    <figure class="w-full">
+                        <div class="phone-frame">
+                            <picture>
+                                <source type="image/avif" srcset="assets/screenshots/chart-light-360.avif 360w, assets/screenshots/chart-light-720.avif 720w, assets/screenshots/chart-light-1080.avif 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <source type="image/webp" srcset="assets/screenshots/chart-light-360.webp 360w, assets/screenshots/chart-light-720.webp 720w, assets/screenshots/chart-light-1080.webp 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <img src="assets/screenshots/chart-light-360.webp" width="1080" height="2400" loading="lazy" decoding="async" alt="The same multi-day tide chart in light theme">
+                            </picture>
+                        </div>
+                        <figcaption class="mt-3 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Light theme</figcaption>
+                    </figure>
+                    <figure class="w-full">
+                        <div class="phone-frame">
+                            <picture>
+                                <source type="image/avif" srcset="assets/screenshots/map-360.avif 360w, assets/screenshots/map-720.avif 720w, assets/screenshots/map-1080.avif 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <source type="image/webp" srcset="assets/screenshots/map-360.webp 360w, assets/screenshots/map-720.webp 720w, assets/screenshots/map-1080.webp 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <img src="assets/screenshots/map-360.webp" width="1080" height="2400" loading="lazy" decoding="async" alt="Map of the United Kingdom showing all 45 tide stations">
+                            </picture>
+                        </div>
+                        <figcaption class="mt-3 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Choose any of 45 stations</figcaption>
+                    </figure>
+                    <figure class="w-full">
+                        <div class="phone-frame">
+                            <picture>
+                                <source type="image/avif" srcset="assets/screenshots/widget-360.avif 360w, assets/screenshots/widget-720.avif 720w, assets/screenshots/widget-1080.avif 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <source type="image/webp" srcset="assets/screenshots/widget-360.webp 360w, assets/screenshots/widget-720.webp 720w, assets/screenshots/widget-1080.webp 1080w" sizes="(min-width: 1024px) 270px, 50vw">
+                                <img src="assets/screenshots/widget-360.webp" width="1080" height="2400" loading="lazy" decoding="async" alt="UK Tides Offline home-screen widget showing today's tide curve">
+                            </picture>
+                        </div>
+                        <figcaption class="mt-3 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Glanceable widget</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beta CTA -->
+        <section id="beta" class="scroll-mt-24 px-4 pb-16 md:pb-24">
+            <div class="max-w-6xl mx-auto">
+                <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-tide-600 to-tide-800 px-6 py-12 md:px-12 md:py-16 text-center text-white shadow-xl">
+                    <svg class="pointer-events-none absolute -bottom-8 -right-8 w-64 opacity-15" viewBox="0 0 144 108" aria-hidden="true">
+                        <path d="M-10,54 C2,38 14,38 26,54 C38,70 50,70 62,54 C74,38 86,38 98,54 C110,70 122,70 134,54 C146,38 158,38 170,54" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Join the internal beta</h2>
+                    <p class="mx-auto mt-4 max-w-xl leading-relaxed text-tide-100">
+                        UK Tides Offline is in internal testing on Google Play. Spots
+                        are limited to 100 users &mdash; apply below and we&rsquo;ll
+                        send you a tester link.
+                    </p>
+                    <a class="btn btn-white mt-8" href="https://forms.gle/kTfjTmrAgcGXGwMX6" target="_blank" rel="noopener">
+                        Apply for the beta
+                        <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <path d="M3 8h10m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <p class="mt-4 text-xs text-tide-200">Free during the testing period</p>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="container">
-        <span>&copy; 2026 UK Tides Offline</span>
+
+    <!-- Site footer -->
+    <footer class="border-t border-gray-200 dark:border-gray-800 py-8">
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-sm text-gray-500 dark:text-gray-400 sm:flex-row">
+            <p>&copy; 2026 UK Tides Offline</p>
+            <nav class="flex items-center gap-6" aria-label="Footer">
+                <a class="transition hover:text-gray-950 dark:hover:text-gray-200" href="privacy">Privacy policy</a>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>

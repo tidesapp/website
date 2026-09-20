@@ -43,9 +43,16 @@ Originals live outside this repo (`~/Documents/projects/tidesapp/`). To
 regenerate the web variants (1080×2400 PNG → AVIF/WebP at 360/720/1080):
 
 ```sh
-magick in.png -resize 720x -quality 80 out.webp      # per width/format
-avifenc -q 34 resized.png out.avif
+magick in.png -strip /tmp/clean.png                  # strip EXIF first — see note
+magick /tmp/clean.png -resize 720x /tmp/w.png        # per width/format
+magick /tmp/w.png -quality 80 out.webp
+avifenc -q 34 /tmp/w.png out.avif
 ```
+
+**Note:** the source screenshots carry an `eXIf` chunk (device build
+fingerprint) and *both* converters copy it into the output. Always run
+`-strip` on the source first and byte-scan the outputs for `EXIF`/`XMP`
+markers before committing.
 
 Google Play listing exports (PNG/JPG, 9:16 + 9:20) are produced in
 `../play-listing/` (sibling of this repo, not published).

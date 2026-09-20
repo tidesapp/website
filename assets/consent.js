@@ -56,7 +56,7 @@
   banner.setAttribute('role', 'region');
   banner.setAttribute('aria-label', 'Cookie consent');
   banner.innerHTML =
-    '<p>We use <a href="privacy.html#analytics">Google&nbsp;Analytics</a> to collect ' +
+    '<p>We use <a href="privacy#analytics">Google&nbsp;Analytics</a> to collect ' +
     'anonymous usage statistics for this website. The app itself collects ' +
     'no data. Your choice is stored on this device only.</p>' +
     '<div class="actions">' +

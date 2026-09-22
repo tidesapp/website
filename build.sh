@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
-# Compile the site CSS with the Tailwind v4 standalone CLI.
-# The output (style.css) is committed, so the published site needs no
-# build step and loads no external dependencies.
+# Build the site locally (run before every commit). Two steps:
+#   1. assemble pages:  src/*.html + partials/ -> *.html (root, committed)
+#   2. compile CSS:     src/input.css -> style.css (minified, committed)
+# The output is committed, so the published site needs no build step and
+# loads no external dependencies.
 set -euo pipefail
 cd "$(dirname "$0")"
+
+node src/build-html.mjs
 
 TWC="${TWC:-$HOME/tools/tides-build/tailwindcss}"
 if [ ! -x "$TWC" ]; then
